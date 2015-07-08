@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     set_current_ip
+    save_user_location
 
     respond_to do |format|
       if @user.save

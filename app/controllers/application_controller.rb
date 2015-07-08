@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
       @user.longitude=@lat_lng[1]
       @user.save
       redirect_to users_index_path
-    else
-      redirect_to users_new_path
     end
   end
 
