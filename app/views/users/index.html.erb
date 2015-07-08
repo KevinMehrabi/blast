@@ -14,9 +14,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.current_ip %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= user.latitude %></td>
+        <td><%= user.longitude %></td>
+        </td>
       </tr>
     <% end %>
   </tbody>
