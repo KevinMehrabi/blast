@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_current_ip
 
+  @user = User.new
+
   protected
   def set_current_ip
-      User.current_ip = request.env['REMOTE_ADDR']
-  end
+    @user = User.where(current_ip: request.remote_ip).first_or_create
+  end 
 
 end

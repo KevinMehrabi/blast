@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new
+    set_current_ip
 
     respond_to do |format|
       if @user.save
@@ -68,7 +69,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:current_ip)
-    end
+    # def user_params
+    #   params.require(:user).permit(:current_ip)
+    # end
 end
