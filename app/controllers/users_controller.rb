@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    save_user_location
     @user = User.new
     set_current_ip
-    save_user_location
 
     respond_to do |format|
       if @user.save
