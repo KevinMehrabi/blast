@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
 
+gem 'json'
+
+gem 'typhoeus'
+
 gem 'quimby'
 
 # Use ActiveModel has_secure_password

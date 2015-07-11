@@ -156,6 +156,7 @@ DEPENDENCIES
   geocoder
   jbuilder (~> 2.0)
   jquery-rails
+  json
   pg
   quimby
   rails (= 4.2.1)
@@ -163,5 +164,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   turbolinks
+  typhoeus
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
