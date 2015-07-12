@@ -19,12 +19,25 @@ var x = document.getElementById("demo");
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(setGeoCookie);
+        navigator.geolocation.getCurrentPosition(setLocation);
         console.log("just got geolocation");
+        console.log(coords.latitude);
+        console.log(coords.longitude);
+
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
         console.log("can't get geolocation");
     }
+}
+
+function setLocation(position){
+     $.ajax({
+                  url: '/setloc',
+                  method: 'PATCH',
+                  data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
+                }).done(function() {
+
+            })
 }
 
 function setGeoCookie(position) {

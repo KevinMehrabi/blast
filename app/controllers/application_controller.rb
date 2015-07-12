@@ -7,16 +7,13 @@ class ApplicationController < ActionController::Base
 
   @user = User.new
 
-  def save_user_location
-    if cookies[:lat_lng]
-      @lat_lng = cookies[:lat_lng].split("|")
-      @user=@current_user
-      @user.latitude=@lat_lng[0]
-      @user.longitude=@lat_lng[1]
-      @user.save
-      redirect_to users_index_path
-    end
-  end
+  def current_user
+     if session[:user_id]
+       @current_user ||= User.find(session[:user_id])
+     else
+       false
+     end
+   end
 
 
   protected

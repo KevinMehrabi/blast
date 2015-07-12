@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    save_user_location
     @user = User.new
     set_current_ip
 
@@ -42,7 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -53,6 +52,16 @@ class UsersController < ApplicationController
       end
     end
   end
+
+
+  def setloc
+    @user=@current_user
+    @user.latitude=params[:latitude]
+    @user.longitude=params[:longitude]
+    @user.save
+    redirect_to users_index_path
+  end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
