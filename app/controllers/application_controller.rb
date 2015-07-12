@@ -22,6 +22,9 @@ class ApplicationController < ActionController::Base
   protected
   def set_current_ip
     @user = User.where(current_ip: request.remote_ip).first_or_create
+    @user = User.find_or_initialize_by({current_ip: request.remote_ip})
+    user = User.find_by({current_ip: request.remote_ip})
+    session[:user_id] = user.id
   end
 
 end
