@@ -55,7 +55,6 @@ class UsersController < ApplicationController
 
 
   def setloc
-    @user=@current_user
     @user.latitude=params[:latitude]
     @user.longitude=params[:longitude]
     @user.save
