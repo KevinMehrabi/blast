@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
 
+gem 'gmaps4rails'
+
 gem 'json'
 
 gem 'typhoeus'
