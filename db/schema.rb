@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(version: 20150713185252) do
 
   create_table "users", force: :cascade do |t|
     t.string   "current_ip"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "current_location"
   end
 
 end

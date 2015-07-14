@@ -8,6 +8,9 @@
 </head>
 <body onload="getLocation()">
 
+  <script src="http://maps.googleapis.com/maps/api/js?v=3&libraries=places&sensor=false"></script>
+  <input class="form-control" id="place" name="place" placeholder="apartment name" type="text" value="" />
+  <output></output>
 
 <%= yield %>
 </body>
