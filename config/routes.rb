@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'places/index'
+
+  get 'places/new'
+
+  get 'places/create'
+
+  get 'places/show'
+
+  get 'places/destroy'
+
   patch '/setloc' => 'users#setloc'
   resources :users
   resource :sessions, except: [:update]
