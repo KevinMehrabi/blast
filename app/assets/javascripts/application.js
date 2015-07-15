@@ -29,21 +29,52 @@ function getLocation() {
 }
 
 function setLocation(position){
+    console.log("setting")
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+
      $.ajax({
                   url: '/setloc',
                   method: 'PATCH',
-                  data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
+                  data: {latitude: lat, longitude: lon}
                 }).done(function() {
+                  console.log("done")
 
             })
-}
+
+            function initialize() {
+              var currentLocation = new google.maps.LatLng(lat,lon);
+              console.log(lat)
+
+              map = new google.maps.Map(document.getElementById('map'), {
+
+              });
+
+              var request = {
+                location: currentLocation,
+                types: ['business'],
+                rankBy: google.maps.places.RankBy.DISTANCE
+              };
+
+              service = new google.maps.places.PlacesService(map);
+              service.nearbySearch(request, callback);
+            }
 
 
-function initialize() {
-var map = new google.maps.Map(document.getElementById('map-canvas'), {
-mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-var input = /** @type {HTMLInputElement} */(document.getElementById('pac-input'));
-var searchBox = new google.maps.places.SearchBox((input));
+          function callback(results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+              var htmlStr = '<ul>';
+              for (var i = 0; i < results.length; i++) {
+                  var place = results[i];
+                  htmlStr += '<li>'+ place.name + " - " + place.vicinity +'</li>';
+                }
+              htmlStr += '</ul>';
+
+              document.getElementById("myPlace").innerHTML = htmlStr;
+             }
+           }
+
+          initialize()
+
 }
-google.maps.event.addDomListener(window, 'load', initialize);

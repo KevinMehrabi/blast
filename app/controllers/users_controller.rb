@@ -58,7 +58,8 @@ class UsersController < ApplicationController
     @user.latitude=params[:latitude]
     @user.longitude=params[:longitude]
     @user.save
-    redirect_to users_index_path
+    # redirect_to users_index_path
+    render json: @user 
   end
 
 
