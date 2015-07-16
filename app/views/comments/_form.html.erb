@@ -1,0 +1,11 @@
+<%= form_for @comment do |f| %>
+
+ <div>
+     <%= f.label :message %>
+     <%= f.text_field :message, :maxlength => "200", :placeholder => "Your answer must be 200 characters max!" %>
+
+ </div>
+
+ <%= f.submit "Blast it!" %>
+
+<% end %>

@@ -52,7 +52,7 @@ function setLocation(position){
 
               var request = {
                 location: currentLocation,
-                types: ['business'],
+                types: ['school', 'restaurant'],
                 rankBy: google.maps.places.RankBy.DISTANCE
               };
 
@@ -67,14 +67,30 @@ function setLocation(position){
               var htmlStr = '<ul>';
               for (var i = 0; i < results.length; i++) {
                   var place = results[i];
-                  htmlStr += '<li>'+ place.name + " - " + place.vicinity +'</li>';
+
+                  htmlStr += '<li>'+ place.name
+                  // + '<img src=' + place.icon + '>'
+                  ;
                 }
               htmlStr += '</ul>';
 
               document.getElementById("myPlace").innerHTML = htmlStr;
+              $('#myPlace').find('li')[i].click(function(){
+                grabPlace(this)
+
+              })
+
              }
            }
+           function grabPlace(button){
+             $.ajax({
+                //  url:
+
+           })}
 
           initialize()
+
+        // }
+
 
 }
