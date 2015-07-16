@@ -84,7 +84,7 @@ function setLocation(position){
            }
            function grabPlace(button){
              $.ajax({
-                //  url:
+                 url: '/places/new'
 
            })}
 
