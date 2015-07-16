@@ -68,14 +68,14 @@ function setLocation(position){
               for (var i = 0; i < results.length; i++) {
                   var place = results[i];
 
-                  htmlStr += '<li>'+ place.name
+                  htmlStr += '<li>'+ place.name 
                   // + '<img src=' + place.icon + '>'
                   ;
                 }
               htmlStr += '</ul>';
 
               document.getElementById("myPlace").innerHTML = htmlStr;
-              $('#myPlace').find('li')[i].click(function(){
+              $('#myPlace').find('li').click(function(){
                 grabPlace(this)
 
               })
@@ -83,11 +83,12 @@ function setLocation(position){
              }
            }
            function grabPlace(button){
-             $.ajax({
-                 url: '/places/new'
-
-           })}
-
+             console.log(button.innerText)
+          //    $.ajax({
+          //        url: '/places/new'
+           //
+          //  })}
+}
           initialize()
 
         // }

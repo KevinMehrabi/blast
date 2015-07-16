@@ -3,10 +3,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new
-      respond_to do |format|
-      format.html #new.html.erb
-      format.json { render json: @place}
+
   end
 
   end

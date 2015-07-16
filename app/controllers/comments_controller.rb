@@ -8,6 +8,12 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @comment = Comment.new
+    if @comment.save
+
+        @place = Place.new
+        @place = 
+
   end
 
   def show
