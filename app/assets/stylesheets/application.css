@@ -14,9 +14,26 @@
  *= require_self
  */
 
-     html, body,
-     #pac-input {
-       width: 800px;
-       height:50px;
-       font-size: 20px;
-     }
+
+
+ .name {
+   font-size: 50px;
+   font-family: Helvetica;
+   font-weight: bold;
+   list-style-type: none;
+   line-height: 200%;
+   text-align: center;
+   background-color: #EBFFF5;
+   padding: 20px 0px 20px 0px;
+
+
+ }
+
+ .name:hover {
+    background-color: #00FF99;
+}
+
+
+.invisible {
+  display: none;
+}

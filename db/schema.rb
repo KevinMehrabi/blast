@@ -11,24 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716212813) do
+ActiveRecord::Schema.define(version: 20150716234828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "message"
+    t.string   "messages"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "comment_id"
+    t.integer  "place_id"
+    t.integer  "user_id"
   end
+
+  add_index "comments", ["place_id"], name: "index_comments_on_place_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "place_id"
+    t.string   "UID"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +43,6 @@ ActiveRecord::Schema.define(version: 20150716212813) do
     t.float    "longitude"
   end
 
+  add_foreign_key "comments", "places"
+  add_foreign_key "comments", "users"
 end

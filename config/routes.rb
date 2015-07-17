@@ -1,25 +1,8 @@
 Rails.application.routes.draw do
-  get 'comments/index'
 
-  get 'comments/new'
-
-  get 'comments/create'
-
-  get 'comments/show'
-
-  get 'comments/destroy'
-
-  get 'places/index'
-
-  get 'places/new'
-
-  get 'places/create'
-
-  get 'places/show'
-
-  get 'places/destroy'
 
   patch '/setloc' => 'users#setloc'
+
   resources :users
   resource :sessions, except: [:update]
   resources :places

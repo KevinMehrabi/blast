@@ -68,7 +68,7 @@ function setLocation(position){
               for (var i = 0; i < results.length; i++) {
                   var place = results[i];
 
-                  htmlStr += '<li>'+ place.name 
+                  htmlStr += '<li class="name">'+ place.name + '<span class="invisible">' + place.id + '</span>'
                   // + '<img src=' + place.icon + '>'
                   ;
                 }
@@ -76,19 +76,39 @@ function setLocation(position){
 
               document.getElementById("myPlace").innerHTML = htmlStr;
               $('#myPlace').find('li').click(function(){
-                grabPlace(this)
+                grabPlace($(this).find("span")[0].innerHTML, this.innerText);
 
               })
 
              }
            }
-           function grabPlace(button){
-             console.log(button.innerText)
-          //    $.ajax({
-          //        url: '/places/new'
-           //
-          //  })}
-}
+           function grabPlace(id, name){
+             console.log(id, name)
+             $.ajax({
+                 url: '../places/' + id,
+                 method: 'GET'
+
+           }).success(function(data,error){
+             if(data.length == 0){
+                  console.log("does not exist in database")
+                  $.ajax({
+                      url: '../places.json',
+                      method: 'POST',
+                      data: {id: id, name: name}
+                    }).done(function(response, error) {
+                        console.log(response)
+
+                  })
+
+             }
+
+
+           })
+
+
+         }
+
+
           initialize()
 
         // }
